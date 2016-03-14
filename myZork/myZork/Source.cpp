@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "World.h";
+#include "Room.h"
+#include "World.h"
+#include "Exit.h"
+#include "Player.h"
 
 
 

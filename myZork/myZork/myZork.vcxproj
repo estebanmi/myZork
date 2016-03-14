@@ -64,15 +64,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Exits.cpp" />
-    <ClCompile Include="Players.cpp" />
-    <ClCompile Include="Rooms.cpp" />
+    <ClCompile Include="Exit.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Exits.h" />
-    <ClInclude Include="Players.h" />
-    <ClInclude Include="Rooms.h" />
+    <ClInclude Include="Exit.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
