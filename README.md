@@ -1,5 +1,5 @@
 -----------------------ZORK by Esteban Marin------------------------------
 
-GITHUB LINK: 
+GITHUB LINK: https://github.com/estebanmi/myZork
 
 HOW TO PLAY:
