@@ -246,15 +246,15 @@ void World::worldintro()
 
 bool World::inputs(){
 
-	char i, j;
-	char help[] = {"\n-----HELP-----\nYou can move by:\nn/s/e/w or north/south/east/west or go + north/south/east/west\n\nYou can look by:\nlook + north/south/east/west\n\nYou can open or close doors by:\nopen door/close door\n\nYou can quit the game by:\nq/quit\n\n "};
+	char i;
+	char help[] = {"\n-----HELP-----\nYou can move by:\nn/s/e/w or north/south/east/west or go + north/south/east/west\n\nYou can look by:\nlook + north/south/east/west\n\nYou can open or close doors by:\nopen + north/south/east/west\n\nYou can quit the game by:\nq/quit\n\n "};
 	char action[16];
 	printf("\nAction: ");
-	scanf_s("%s",&action);
+	gets_s(action);
 
 	//HELP ACTION ///////////////////////////////////
 
-	if (strcmp(action, "help") == 0)
+	if ((strcmp(action, "help") == 0) || (strcmp(action, "h") == 0))
 	{
 		printf("%s",help);
 	}
@@ -421,34 +421,292 @@ bool World::inputs(){
 
 	else if (strcmp(action, "look north") == 0)
 	{
-
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == North)
+				{
+					printf("%s", (exits + i)->description);
+				}
+			}
+		}
 	}
 
 	else if (strcmp(action, "look south") == 0)
 	{
-
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == South)
+				{
+					printf("%s", (exits + i)->description);
+				}
+				else
+				{
+					printf("There's nothing to look.\n");
+				}
+			}
+		}
 	}
-
+	
 	else if (strcmp(action, "look east") == 0)
 	{
-
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == East)
+				{
+					printf("%s", (exits + i)->description);
+				}
+				else
+				{
+					printf("There's nothing to look.\n");
+				}
+			}
+		}
 	}
 
 	else if (strcmp(action, "look west") == 0)
 	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == West)
+				{
+					printf("%s\n", (exits + i)->description);
+				}
+				else
+				{
+					printf("There's nothing to look.\n");
+				}
+			}
+		}
+	}
 
+	else if ((strcmp(action, "look") == 0) || (strcmp(action, "look room") == 0))
+	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+					printf("%s\n", (exits + i)->destiny->description);
+			}
+		}
 	}
 
 	// OPEN/CLOSE ACTION ////////////////////////////
 
-	else if (strcmp(action, "open") == 0)
+	else if (strcmp(action, "open north") == 0)
 	{
-
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == North)
+				{
+					if ((exits + i)->open == false)
+					{
+						(exits + i)->open = true;
+						printf("You opened the door.\n");
+					}
+					else
+					{
+						printf("The door is already opened.\n");
+					}
+				}
+				else
+				{
+					printf("No doors in that way.\n");
+				}
+			}
+		}
 	}
 
-	else if (strcmp(action, "close") == 0)
+	else if (strcmp(action, "open south") == 0)
 	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == South)
+				{
+					if ((exits + i)->open == false)
+					{
+						(exits + i)->open = true;
+						printf("You opened the door.\n");
+					}
+					else
+					{
+						printf("The door is already opened.\n");
+					}
+				}
+				else
+				{
+					printf("No doors in that way.\n");
+				}
+			}
+		}
+	}
 
+	else if (strcmp(action, "open east") == 0)
+	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == East)
+				{
+					if ((exits + i)->open == false)
+					{
+						(exits + i)->open = true;
+						printf("You opened the door.\n");
+					}
+					else
+					{
+						printf("The door is already opened.\n");
+					}
+				}
+				else
+				{
+					printf("No doors in that way.\n");
+				}
+			}
+		}
+	}
+
+	else if (strcmp(action, "open west") == 0)
+	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == West)
+				{
+					if ((exits + i)->open == false)
+					{
+						(exits + i)->open = true;
+						printf("You opened the door.\n");
+					}
+					else
+					{
+						printf("The door is already opened.\n");
+					}
+				}
+				else
+				{
+					printf("No doors in that way.\n");
+				}
+			}
+		}
+	}
+	
+
+	else if (strcmp(action, "close north") == 0)
+	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == North)
+				{
+					if ((exits + i)->open == true)
+					{
+						(exits + i)->open = false;
+						printf("You closed the door.\n");
+					}
+					else
+					{
+						printf("The door is already closed.\n");
+					}
+				}
+				else
+				{
+					printf("No doors in that way.\n");
+				}
+			}
+		}
+	}
+
+	else if (strcmp(action, "close south") == 0)
+	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == South)
+				{
+					if ((exits + i)->open == true)
+					{
+						(exits + i)->open = false;
+						printf("You closed the door.\n");
+					}
+					else
+					{
+						printf("The door is already closed.\n");
+					}
+				}
+				else
+				{
+					printf("No doors in that way.\n");
+				}
+			}
+		}
+	}
+
+	else if (strcmp(action, "close east") == 0)
+	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == East)
+				{
+					if ((exits + i)->open == true)
+					{
+						(exits + i)->open = false;
+						printf("You closed the door.\n");
+					}
+					else
+					{
+						printf("The door is already closed.\n");
+					}
+				}
+				else
+				{
+					printf("No doors in that way.\n");
+				}
+			}
+		}
+	}
+
+	else if (strcmp(action, "close west") == 0)
+	{
+		for (i = 0; i < NUM_EXITS; i++)
+		{
+			if ((exits + i)->origin == player->Plocation)
+			{
+				if ((exits + i)->direction == West)
+				{
+					if ((exits + i)->open == true)
+					{
+						(exits + i)->open = false;
+						printf("You closed the door.\n");
+					}
+					else
+					{
+						printf("The door is already closed.\n");
+					}
+				}
+				else
+				{
+					printf("No doors in that way.\n");
+				}
+			}
+		}
 	}
 
 	// QUIT ACTION /////////////////////////////////
