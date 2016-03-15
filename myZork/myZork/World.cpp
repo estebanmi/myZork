@@ -297,7 +297,7 @@ bool World::inputs(){
 
 	// QUIT ACTION /////////////////////////////////
 
-	if (strcmp(action, "q") == 0)
+	if ((strcmp(action, "q") == 0) || (strcmp(action, "quit") == 0))
 	{
 		return false;
 	}
