@@ -19,6 +19,8 @@ public:
 	char name[30];
 	char description[250];
 	
+	Room();
+	~Room();
 };
 
 #endif
