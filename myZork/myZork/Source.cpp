@@ -14,8 +14,10 @@ int main()
 	world->createworld();
 	world->worldintro();
 	
-	
+	do
+	{ 
 	world->inputs();
+	} while (1);
 
 	getchar();
 
