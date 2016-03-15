@@ -70,7 +70,7 @@ void World::createworld()
 
 	// main corridor -2 to lab
 	strcpy_s(exits[0].name, "mc-2lab");
-	strcpy_s(exits[0].description, "mc-2lab");
+	strcpy_s(exits[0].description, "Over the door you can read: laboratory.");
 	(exits + 0)->origin = &rooms[0];
 	(exits + 0)->destiny = &rooms[1];
 	(exits + 0)->open = true;
@@ -78,7 +78,7 @@ void World::createworld()
 
 	// lab to main corridor -2
 	strcpy_s(exits[1].name, "labmc-2");
-	strcpy_s(exits[1].description, "labmc-2");
+	strcpy_s(exits[1].description, "You can see a door to the main corridor.");
 	(exits + 1)->origin = &rooms[1];
 	(exits + 1)->destiny = &rooms[0];
 	(exits + 1)->open = true;
@@ -86,7 +86,7 @@ void World::createworld()
 
 	// main corridor -2 to power supply room
 	strcpy_s(exits[2].name, "mc-2psr");
-	strcpy_s(exits[2].description, "mc-2psr");
+	strcpy_s(exits[2].description, "You see an illuminated door that says: Power Supply Room");
 	(exits + 2)->origin = &rooms[0];
 	(exits + 2)->destiny = &rooms[3];
 	(exits + 2)->open = true;
@@ -94,7 +94,7 @@ void World::createworld()
 
 	// power supply room to main corridor -2
 	strcpy_s(exits[3].name, "psrmc-2");
-	strcpy_s(exits[3].description, "psrmc-2");
+	strcpy_s(exits[3].description, "You can see a door to the main corridor.");
 	(exits + 3)->origin = &rooms[3];
 	(exits + 3)->destiny = &rooms[0];
 	(exits + 3)->open = true;
@@ -102,7 +102,7 @@ void World::createworld()
 
 	// lab to samples room
 	strcpy_s(exits[4].name, "labsr");
-	strcpy_s(exits[4].description, "labsr");
+	strcpy_s(exits[4].description, "You see a little but reinforced door.");
 	(exits + 4)->origin = &rooms[1];
 	(exits + 4)->destiny = &rooms[2];
 	(exits + 4)->open = true;
@@ -110,7 +110,7 @@ void World::createworld()
 
 	// samples room to lab
 	strcpy_s(exits[5].name, "srlab");
-	strcpy_s(exits[5].description, "srlab");
+	strcpy_s(exits[5].description, "You see the reinforced door to the lab");
 	(exits + 5)->origin = &rooms[2];
 	(exits + 5)->destiny = &rooms[1];
 	(exits + 5)->open = true;
@@ -120,7 +120,7 @@ void World::createworld()
 
 	// main corridor -2 to main corridor -1
 	strcpy_s(exits[6].name, "mc-2mc-1");
-	strcpy_s(exits[6].description, "mc-2mc-1");
+	strcpy_s(exits[6].description, "You can't see anything over the elevator.");
 	(exits + 6)->origin = &rooms[0];
 	(exits + 6)->destiny = &rooms[4];
 	(exits + 6)->open = true;
@@ -128,7 +128,7 @@ void World::createworld()
 
 	// main corridor -1 to main corridor -2
 	strcpy_s(exits[7].name, "mc-1mc-2");
-	strcpy_s(exits[7].description, "mc-1mc-2");
+	strcpy_s(exits[7].description, "You can't see anything under the elevator.");
 	(exits + 7)->origin = &rooms[4];
 	(exits + 7)->destiny = &rooms[0];
 	(exits + 7)->open = true;
@@ -138,7 +138,7 @@ void World::createworld()
 
 	// main corridor -1 to barracks
 	strcpy_s(exits[8].name, "mc-1bar");
-	strcpy_s(exits[8].description, "mc-1bar");
+	strcpy_s(exits[8].description, "You see a door where you can read: Barracks.");
 	(exits + 8)->origin = &rooms[4];
 	(exits + 8)->destiny = &rooms[5];
 	(exits + 8)->open = true;
@@ -146,7 +146,7 @@ void World::createworld()
 
 	// barracks to main corridor -1 
 	strcpy_s(exits[9].name, "barmc-1");
-	strcpy_s(exits[9].description, "barmc-1");
+	strcpy_s(exits[9].description, "You can see a door to the main corridor.");
 	(exits + 9)->origin = &rooms[5];
 	(exits + 9)->destiny = &rooms[4];
 	(exits + 9)->open = true;
@@ -154,7 +154,7 @@ void World::createworld()
 
 	// main corridor -1 to kitchen
 	strcpy_s(exits[10].name, "mc-1kit");
-	strcpy_s(exits[10].description, "mc-1kit");
+	strcpy_s(exits[10].description, "There is a door to the kitchen.");
 	(exits + 10)->origin = &rooms[4];
 	(exits + 10)->destiny = &rooms[6];
 	(exits + 10)->open = true;
@@ -162,7 +162,7 @@ void World::createworld()
 
 	// kitchen to main corridor -1
 	strcpy_s(exits[11].name, "kitmc-1");
-	strcpy_s(exits[11].description, "kitmc-1");
+	strcpy_s(exits[11].description, "You can see a door to the main corridor.");
 	(exits + 11)->origin = &rooms[6];
 	(exits + 11)->destiny = &rooms[4];
 	(exits + 11)->open = true;
@@ -170,7 +170,7 @@ void World::createworld()
 
 	// kitchen to storage
 	strcpy_s(exits[12].name, "kitsto");
-	strcpy_s(exits[12].description, "kitsto");
+	strcpy_s(exits[12].description, "You can see the storage door.");
 	(exits + 12)->origin = &rooms[6];
 	(exits + 12)->destiny = &rooms[7];
 	(exits + 12)->open = true;
@@ -178,7 +178,7 @@ void World::createworld()
 
 	// storage to kitchen 
 	strcpy_s(exits[13].name, "stokit");
-	strcpy_s(exits[13].description, "stokit");
+	strcpy_s(exits[13].description, "There is a door to the kitchen.");
 	(exits + 13)->origin = &rooms[7];
 	(exits + 13)->destiny = &rooms[6];
 	(exits + 13)->open = true;
@@ -188,7 +188,7 @@ void World::createworld()
 
 	// main corridor -1 to main corridor 0
 	strcpy_s(exits[14].name, "mc-1mc0");
-	strcpy_s(exits[14].description, "mc-1mc0");
+	strcpy_s(exits[14].description, "You can't see anything over the elevator.");
 	(exits + 14)->origin = &rooms[4];
 	(exits + 14)->destiny = &rooms[8];
 	(exits + 14)->open = true;
@@ -196,7 +196,7 @@ void World::createworld()
 
 	// main corridor 0 to main corridor -1
 	strcpy_s(exits[15].name, "mc0mc-1");
-	strcpy_s(exits[15].description, "mc0mc-1");
+	strcpy_s(exits[15].description, "You can't see anything under the elevator.");
 	(exits + 15)->origin = &rooms[8];
 	(exits + 15)->destiny = &rooms[4];
 	(exits + 15)->open = true;
@@ -206,7 +206,7 @@ void World::createworld()
 
 	// main corridor 0 to detox room
 	strcpy_s(exits[16].name, "mc0det");
-	strcpy_s(exits[16].description, "mc0det");
+	strcpy_s(exits[16].description, "You can see an armored door of glass that takes you to the detox room.");
 	(exits + 16)->origin = &rooms[8];
 	(exits + 16)->destiny = &rooms[9];
 	(exits + 16)->open = true;
@@ -214,7 +214,7 @@ void World::createworld()
 
 	// detox room to main corridor 0 
 	strcpy_s(exits[17].name, "detmc0");
-	strcpy_s(exits[17].description, "detmc0");
+	strcpy_s(exits[17].description, "You can see the door to the main corridor.");
 	(exits + 17)->origin = &rooms[9];
 	(exits + 17)->destiny = &rooms[8];
 	(exits + 17)->open = true;
@@ -222,7 +222,7 @@ void World::createworld()
 
 	// detox room to elevator 
 	strcpy_s(exits[18].name, "detele");
-	strcpy_s(exits[18].description, "detele");
+	strcpy_s(exits[18].description, "You can see a second armored glass door to the elevator room that takes you to the surface, out of this base.");
 	(exits + 18)->origin = &rooms[9];
 	(exits + 18)->destiny = &rooms[10];
 	(exits + 18)->open = true;
@@ -230,7 +230,7 @@ void World::createworld()
 
 	// elevator to detox room 
 	strcpy_s(exits[18].name, "eledet");
-	strcpy_s(exits[18].description, "eledet");
+	strcpy_s(exits[18].description, "You can see an armored door of glass that takes you to the detox room.");
 	(exits + 18)->origin = &rooms[10];
 	(exits + 18)->destiny = &rooms[9];
 	(exits + 18)->open = true;
@@ -240,8 +240,9 @@ void World::createworld()
 
 void World::worldintro()
 {
-	printf("Welcome to my Zork\n");
-
+	printf("***WELCOME TO MY ZORK*** by Esteban Marin\n\nYou were part of a secret team developing a new bio weapon in a hidden base underwater. When the project was done, you were betrayed and attacked by the soldiers.Fortunately, under the lifeless body of one of your friends, they left you for dead... Now, when all you can hear is silence, just you and a lot of bodies, remain on the lower floor. With no time to feel safe, you realize that water is entering all over the base and soon will flood all... Run!\n");
+	getchar();
+	printf("%s\n", (player->Plocation->description));
 }
 
 bool World::inputs(){
@@ -493,7 +494,7 @@ bool World::inputs(){
 		{
 			if ((exits + i)->origin == player->Plocation)
 			{
-					printf("%s\n", (exits + i)->destiny->description);
+				printf("%s\n", player->Plocation->description);
 			}
 		}
 	}
