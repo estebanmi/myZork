@@ -10,12 +10,16 @@
 
 int main()
 {
+	World* world = new World;
+	world->createworld();
+	world->worldintro();
+	
+	
+	world->inputs();
 
+	getchar();
 
-
-
-
-
+	delete world;
 
 	return 0;
 }
