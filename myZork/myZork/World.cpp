@@ -19,7 +19,7 @@ World::~World()
 	delete player;
 };
 
-void World::createworld()
+const void World::createworld()
 {
 	// STARTING ROOM /////////////////////////////////
 	player->Plocation = (rooms + 1);
@@ -47,21 +47,21 @@ void World::createworld()
 	// ROOMS DESCRIPTIONS  ///////////////////////////
 
 	// FLOOR -2 (start)
-	strcpy_s((rooms + 0)->description, "It is a large corridor with a big -2 that looks great on the wall. Here there was a shooting. A lot of corpses lies in the ground, you met some of them but...  you hadn't friends here. You can see an elevator and two opened doors.");
-	strcpy_s((rooms + 1)->description, "This is the laboratory where biological weapons were created, you made horrible human experiments that you would like to forget. You can see two doors.");
-	strcpy_s((rooms + 2)->description, "A light green mist surrounds this claustrophobic place. You are in the samples room. The main toxins and documents were stored here... There's only a door to get back.");
-	strcpy_s((rooms + 3)->description, "You're in the power supply room. The static electricity makes your hair stand on end... Here the energy is generated for the entire base. There's only a door to get back.");
+	strcpy_s((rooms + 0)->description, "It is a large corridor with a big -2 that looks great on the wall. Here there was a shooting. A lot of corpses lies in the ground, you met some of them but...  you hadn't friends here. You can see an elevator and two opened doors. (up/east/south)");
+	strcpy_s((rooms + 1)->description, "This is the laboratory where biological weapons were created, you made horrible human experiments that you would like to forget. You can see two doors. (west/south)");
+	strcpy_s((rooms + 2)->description, "A light green mist surrounds this claustrophobic place. You are in the samples room. The main toxins and documents were stored here... There's only a door to get back. (north)");
+	strcpy_s((rooms + 3)->description, "You're in the power supply room. The static electricity makes your hair stand on end... Here the energy is generated for the entire base. There's only a door to get back. (north)");
 
 	// FLOOR -1 
-	strcpy_s((rooms + 4)->description, "You are in a main corridor with a large -1 on the wall. This is the middle plant of the base. There's blood over the walls, but no bodies near. You can see an elevator and two opened doors. ");
-	strcpy_s((rooms + 5)->description, "This is the barracks. Here you used to keep your stuff. Everything is scrambled. There is only a door to get back.");
-	strcpy_s((rooms + 6)->description, "You are in the kitchen. It looks like a space complex. A mixture of food and dead twistes your stomach. There are two doors.");
-	strcpy_s((rooms + 7)->description, "This is the store. Here all the cook stuff are stored and some food. There's only a door, back to the kitchen.");
+	strcpy_s((rooms + 4)->description, "You are in a main corridor with a large -1 on the wall. This is the middle plant of the base. There's blood over the walls, but no bodies near. You can see an elevator and two opened doors. (up/down/east/south))");
+	strcpy_s((rooms + 5)->description, "This is the barracks. Here you used to keep your stuff. Everything is scrambled. There is only a door to get back. (west)");
+	strcpy_s((rooms + 6)->description, "You are in the kitchen. It looks like a space complex. A mixture of food and dead twistes your stomach. There are two doors. (north/east)");
+	strcpy_s((rooms + 7)->description, "This is the store. Here all the cook stuff are stored and some food. There's only a door, back to the kitchen. (west)");
 
 	// FLOOR 0
-	strcpy_s((rooms + 8)->description, "You are in the main corridor in the top plant. A big zero looks in the wall. There is an elevator, and an armored door.");
-	strcpy_s((rooms + 9)->description, "This is the detox room. It looks like a tunnel... It does not make you feel too safe. There are two armored doors. ");
-	strcpy_s((rooms + 10)->description, "You are in the elevator room. It takes you out of the base through the water. There is the elevator and the armored door to get back.");
+	strcpy_s((rooms + 8)->description, "You are in the main corridor in the top plant. A big zero looks in the wall. There is an elevator, and an armored door. (down/east)");
+	strcpy_s((rooms + 9)->description, "This is the detox room. It looks like a tunnel... It does not make you feel too safe. There are two armored doors. (west/south)");
+	strcpy_s((rooms + 10)->description, "You are in the elevator room. It takes you out of the base through the water. There is the elevator and the armored door to get back. (north)");
 
 
 	// EXITS     /////////////////////////////////////////////
@@ -105,7 +105,7 @@ void World::createworld()
 	strcpy_s(exits[4].description, "You see a little but reinforced door.");
 	(exits + 4)->origin = &rooms[1];
 	(exits + 4)->destiny = &rooms[2];
-	(exits + 4)->open = true;
+	(exits + 4)->open = false;
 	(exits + 4)->direction = South;
 
 	// samples room to lab
@@ -141,7 +141,7 @@ void World::createworld()
 	strcpy_s(exits[8].description, "You see a door where you can read: Barracks.");
 	(exits + 8)->origin = &rooms[4];
 	(exits + 8)->destiny = &rooms[5];
-	(exits + 8)->open = true;
+	(exits + 8)->open = false;
 	(exits + 8)->direction = East;
 
 	// barracks to main corridor -1 
@@ -217,7 +217,7 @@ void World::createworld()
 	strcpy_s(exits[17].description, "You can see the door to the main corridor.");
 	(exits + 17)->origin = &rooms[9];
 	(exits + 17)->destiny = &rooms[8];
-	(exits + 17)->open = true;
+	(exits + 17)->open = false;
 	(exits + 17)->direction = West;
 
 	// detox room to elevator 
@@ -225,7 +225,7 @@ void World::createworld()
 	strcpy_s(exits[18].description, "You can see a second armored glass door to the elevator room that takes you to the surface, out of this base.");
 	(exits + 18)->origin = &rooms[9];
 	(exits + 18)->destiny = &rooms[10];
-	(exits + 18)->open = true;
+	(exits + 18)->open = false;
 	(exits + 18)->direction = South;
 
 	// elevator to detox room 
@@ -238,14 +238,14 @@ void World::createworld()
 
 }
 
-void World::worldintro()
+const void World::worldintro()
 {
 	printf("***WELCOME TO MY ZORK*** by Esteban Marin\n\nYou were part of a secret team developing a new bio weapon in a hidden base underwater. When the project was done, you were betrayed and attacked by the soldiers.Fortunately, under the lifeless body of one of your friends, they left you for dead... Now, when all you can hear is silence, just you and a lot of bodies, remain on the lower floor. With no time to feel safe, you realize that water is entering all over the base and soon will flood all... Run!\n");
 	getchar();
 	printf("%s\n", (player->Plocation->description));
 }
 
-bool World::inputs(){
+const bool World::inputs(){
 
 	char i;
 	char help[] = {"\n-----HELP-----\nYOU CAN MOVE BY PRESSING:\nn/s/e/w\nnorth/south/east/west\ngo + north/south/east/west\n\nYOU CAN LOOK BY PRESSING:\nl\nlook\nl + room/north/south/east/west\nl + oom/north/south/east/west\nlook + room/north/south/east/west\n\nYOU CAN OPEN OR CLOSE DOORS BY PRESSING:\no/c + n/s/e/w\nopen/close + north/south/east/west\n\nYOU CAN QUIT THE GAME BY PRESSING:\nq/quit\n\n "};
@@ -503,11 +503,6 @@ bool World::inputs(){
 						break;
 					}
 				}
-				else
-				{
-					printf("No doors in that way.\n");
-					break;
-				}
 			}
 		}
 	}
@@ -531,11 +526,6 @@ bool World::inputs(){
 						printf("The door is already opened.\n");
 						break;
 					}
-				}
-				else
-				{
-					printf("No doors in that way.\n");
-					break;
 				}
 			}
 		}
@@ -561,11 +551,6 @@ bool World::inputs(){
 						break;
 					}
 				}
-				else
-				{
-					printf("No doors in that way.\n");
-					break;
-				}
 			}
 		}
 	}
@@ -589,11 +574,6 @@ bool World::inputs(){
 						printf("The door is already opened.\n");
 						break;
 					}
-				}
-				else
-				{
-					printf("No doors in that way.\n");
-					break;
 				}
 			}
 		}
@@ -620,11 +600,6 @@ bool World::inputs(){
 						break;
 					}
 				}
-				else
-				{
-					printf("No doors in that way.\n");
-					break;
-				}
 			}
 		}
 	}
@@ -648,11 +623,6 @@ bool World::inputs(){
 						printf("The door is already closed.\n");
 						break;
 					}
-				}
-				else
-				{
-					printf("No doors in that way.\n");
-					break;
 				}
 			}
 		}
@@ -678,11 +648,6 @@ bool World::inputs(){
 						break;
 					}
 				}
-				else
-				{
-					printf("No doors in that way.\n");
-					break;
-				}
 			}
 		}
 	}
@@ -707,11 +672,6 @@ bool World::inputs(){
 						break;
 					}
 				}
-				else
-				{
-					printf("No doors in that way.\n");
-					break;
-				}
 			}
 		}
 	}
@@ -720,14 +680,14 @@ bool World::inputs(){
 
 	else if ((strcmp(action, "q") == 0) || (strcmp(action, "quit") == 0))
 	{
-		printf("Thanks for playing! c u soon!\n");
+		printf("\nThanks for playing! c u soon!\n");
 		getchar();
 		return false;
 	}
 
 	else
 	{
-		printf("Wrong input, type help for HELP.\n");
+		printf("Wrong input, type h for HELP.\n");
 	}
 	
 	return true;

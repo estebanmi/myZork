@@ -19,9 +19,9 @@ public:
 	
 	~World();
 	
-	void createworld();
-	void worldintro();
-	bool inputs();
+	const void createworld();
+	const void worldintro();
+	const bool inputs();
 
 };
 
