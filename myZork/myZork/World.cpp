@@ -60,7 +60,7 @@ void World::createworld()
 
 	// FLOOR 0
 	strcpy_s((rooms + 8)->description, "You are in the main corridor in the top plant. A big zero looks in the wall. There is an elevator, and an armored door.");
-	strcpy_s((rooms + 9)->description, "This is the detox room. It looks like a tunnel... It does not make you feel too safe. There are two amored doors. ");
+	strcpy_s((rooms + 9)->description, "This is the detox room. It looks like a tunnel... It does not make you feel too safe. There are two armored doors. ");
 	strcpy_s((rooms + 10)->description, "You are in the elevator room. It takes you out of the base through the water. There is the elevator and the armored door to get back.");
 
 
@@ -229,12 +229,12 @@ void World::createworld()
 	(exits + 18)->direction = South;
 
 	// elevator to detox room 
-	strcpy_s(exits[18].name, "eledet");
-	strcpy_s(exits[18].description, "You can see an armored door of glass that takes you to the detox room.");
-	(exits + 18)->origin = &rooms[10];
-	(exits + 18)->destiny = &rooms[9];
-	(exits + 18)->open = true;
-	(exits + 18)->direction = North;
+	strcpy_s(exits[19].name, "eledet");
+	strcpy_s(exits[19].description, "You can see an armored door of glass that takes you to the detox room.");
+	(exits + 19)->origin = &rooms[10];
+	(exits + 19)->destiny = &rooms[9];
+	(exits + 19)->open = true;
+	(exits + 19)->direction = North;
 
 }
 
@@ -248,12 +248,12 @@ void World::worldintro()
 bool World::inputs(){
 
 	char i;
-	char help[] = {"\n-----HELP-----\nYou can move by:\nn/s/e/w or north/south/east/west or go + north/south/east/west\n\nYou can look by:\nlook + north/south/east/west\n\nYou can open or close doors by:\nopen + north/south/east/west\n\nYou can quit the game by:\nq/quit\n\n "};
+	char help[] = {"\n-----HELP-----\nYOU CAN MOVE BY PRESSING:\nn/s/e/w\nnorth/south/east/west\ngo + north/south/east/west\n\nYOU CAN LOOK BY PRESSING:\nl\nlook\nl + room/north/south/east/west\nl + oom/north/south/east/west\nlook + room/north/south/east/west\n\nYOU CAN OPEN OR CLOSE DOORS BY PRESSING:\no/c + n/s/e/w\nopen/close + north/south/east/west\n\nYOU CAN QUIT THE GAME BY PRESSING:\nq/quit\n\n "};
 	char action[16];
 	printf("\nAction: ");
 	gets_s(action);
 
-	//HELP ACTION ///////////////////////////////////
+	// HELP ACTION ///////////////////////////////////
 
 	if ((strcmp(action, "help") == 0) || (strcmp(action, "h") == 0))
 	{
@@ -269,20 +269,18 @@ bool World::inputs(){
 			if ((exits + i)->origin == player->Plocation)
 			{
 				if ((exits + i)->direction == North)
-					{
-						if ((exits + i)->open == true)
-						{
-							player->Plocation = (exits + i)->destiny;
-							printf("%s\n", (exits + i)->destiny->description);
-						}
-						else
-						{
-							printf("The door is closed.\n");
-						}
-					}
-				else
 				{
-					printf("You can't go that way.\n"); 
+					if ((exits + i)->open == true)
+					{
+						player->Plocation = (exits + i)->destiny;
+						printf("%s\n", (exits + i)->destiny->description);
+						break;
+					}
+					else
+					{
+						printf("The door is closed.\n");
+						break;
+					}
 				}
 			}
 		}
@@ -294,25 +292,24 @@ bool World::inputs(){
 		{
 			if ((exits + i)->origin == player->Plocation)
 			{
-				if ((exits + i)->open == true)
+				if ((exits + i)->direction == South)
 				{
-					if ((exits + i)->direction == South)
+					if ((exits + i)->open == true)
 					{
 						player->Plocation = (exits + i)->destiny;
-						printf("%s", (exits + i)->destiny->description);
+						printf("%s\n", (exits + i)->destiny->description);
+						break;
 					}
 					else
 					{
-						printf("You can't go that way.\n");
+						printf("The door is closed.\n");
+						break;
 					}
-				}
-				else
-				{
-					printf("The door is closed.\n");
 				}
 			}
 		}
 	}
+	
 
 	else if ((strcmp(action, "e") == 0) || (strcmp(action, "east") == 0) || (strcmp(action, "go east") == 0))
 	{
@@ -320,22 +317,20 @@ bool World::inputs(){
 		{
 			if ((exits + i)->origin == player->Plocation)
 			{
-				if ((exits + i)->open == true)
+				if ((exits + i)->direction == East)
 				{
-					if ((exits + i)->direction == East)
+					if ((exits + i)->open == true)
 					{
 						player->Plocation = (exits + i)->destiny;
-						printf("%s", (exits + i)->destiny->description);
+						printf("%s\n", (exits + i)->destiny->description);
+						break;
 					}
 					else
 					{
-						printf("You can't go that way.\n");
+						printf("The door is closed.\n");
+						break;
 					}
-				}
-				else
-				{
-					printf("The door is closed.\n");
-				}
+				}				
 			}
 		}
 	}
@@ -346,22 +341,20 @@ bool World::inputs(){
 		{
 			if ((exits + i)->origin == player->Plocation)
 			{
-				if ((exits + i)->open == true)
+				if ((exits + i)->direction == West)
 				{
-					if ((exits + i)->direction == West)
+					if ((exits + i)->open == true)
 					{
 						player->Plocation = (exits + i)->destiny;
-						printf("%s", (exits + i)->destiny->description);
+						printf("%s\n", (exits + i)->destiny->description);
+						break;
 					}
 					else
 					{
-						printf("You can't go that way.\n");
+						printf("The door is closed.\n");
+						break;
 					}
-				}
-				else
-				{
-					printf("The door is closed.\n");
-				}
+				}				
 			}
 		}
 	}
@@ -372,22 +365,20 @@ bool World::inputs(){
 		{
 			if ((exits + i)->origin == player->Plocation)
 			{
-				if ((exits + i)->open == true)
+				if ((exits + i)->direction == Up)
 				{
-					if ((exits + i)->direction == Up)
+					if ((exits + i)->open == true)
 					{
 						player->Plocation = (exits + i)->destiny;
-						printf("%s", (exits + i)->destiny->description);
+						printf("%s\n", (exits + i)->destiny->description);
+						break;
 					}
 					else
 					{
-						printf("You can't go that way.\n");
+						printf("The elevator don't works.\n");
+						break;
 					}
-				}
-				else
-				{
-					printf("The elevator don't works.\n");
-				}
+				}				
 			}
 		}
 	}
@@ -398,29 +389,27 @@ bool World::inputs(){
 		{
 			if ((exits + i)->origin == player->Plocation)
 			{
-				if ((exits + i)->open == true)
+				if ((exits + i)->direction == Down)
 				{
-					if ((exits + i)->direction == Down)
+					if ((exits + i)->open == true)
 					{
 						player->Plocation = (exits + i)->destiny;
-						printf("%s", (exits + i)->destiny->description);
+						printf("%s\n", (exits + i)->destiny->description);
+						break;
 					}
 					else
 					{
-						printf("You can't go that way.\n");
+						printf("The elevator don't works.\n");
+						break;
 					}
-				}
-				else
-				{
-					printf("The elevator don't works.\n");
-				}
+				}				
 			}
 		}
 	}
 	
 	// LOOK ACTION //////////////////////////////////
 
-	else if (strcmp(action, "look north") == 0)
+	else if ((strcmp(action, "look north") == 0) || (strcmp(action, "l n") == 0) || (strcmp(action, "l north") == 0) || (strcmp(action, "look n") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -428,13 +417,14 @@ bool World::inputs(){
 			{
 				if ((exits + i)->direction == North)
 				{
-					printf("%s", (exits + i)->description);
+					printf("%s\n", (exits + i)->description);
+					break;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(action, "look south") == 0)
+	else if ((strcmp(action, "look south") == 0) || (strcmp(action, "l s") == 0) || (strcmp(action, "l south") == 0) || (strcmp(action, "look s") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -442,17 +432,14 @@ bool World::inputs(){
 			{
 				if ((exits + i)->direction == South)
 				{
-					printf("%s", (exits + i)->description);
-				}
-				else
-				{
-					printf("There's nothing to look.\n");
+					printf("%s\n", (exits + i)->description);
+					break;
 				}
 			}
 		}
 	}
 	
-	else if (strcmp(action, "look east") == 0)
+	else if ((strcmp(action, "look east") == 0) || (strcmp(action, "l e") == 0) || (strcmp(action, "l east") == 0) || (strcmp(action, "look e") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -460,17 +447,14 @@ bool World::inputs(){
 			{
 				if ((exits + i)->direction == East)
 				{
-					printf("%s", (exits + i)->description);
-				}
-				else
-				{
-					printf("There's nothing to look.\n");
+					printf("%s\n", (exits + i)->description);
+					break;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(action, "look west") == 0)
+	else if ((strcmp(action, "look west") == 0) || (strcmp(action, "l w") == 0) || (strcmp(action, "l west") == 0) || (strcmp(action, "look w") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -479,29 +463,27 @@ bool World::inputs(){
 				if ((exits + i)->direction == West)
 				{
 					printf("%s\n", (exits + i)->description);
-				}
-				else
-				{
-					printf("There's nothing to look.\n");
+					break;
 				}
 			}
 		}
 	}
 
-	else if ((strcmp(action, "look") == 0) || (strcmp(action, "look room") == 0))
+	else if ((strcmp(action, "look") == 0) || (strcmp(action, "l r") == 0) || (strcmp(action, "l room") == 0) || (strcmp(action, "look r") == 0) || (strcmp(action, "look room") == 0) || (strcmp(action, "l") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
 			if ((exits + i)->origin == player->Plocation)
 			{
 				printf("%s\n", player->Plocation->description);
+				break;
 			}
 		}
 	}
 
 	// OPEN/CLOSE ACTION ////////////////////////////
 
-	else if (strcmp(action, "open north") == 0)
+	else if ((strcmp(action, "open north") == 0) || (strcmp(action, "o n") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -513,21 +495,24 @@ bool World::inputs(){
 					{
 						(exits + i)->open = true;
 						printf("You opened the door.\n");
+						break;
 					}
 					else
 					{
 						printf("The door is already opened.\n");
+						break;
 					}
 				}
 				else
 				{
 					printf("No doors in that way.\n");
+					break;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(action, "open south") == 0)
+	else if ((strcmp(action, "open south") == 0) || (strcmp(action, "o s") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -539,21 +524,24 @@ bool World::inputs(){
 					{
 						(exits + i)->open = true;
 						printf("You opened the door.\n");
+						break;
 					}
 					else
 					{
 						printf("The door is already opened.\n");
+						break;
 					}
 				}
 				else
 				{
 					printf("No doors in that way.\n");
+					break;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(action, "open east") == 0)
+	else if ((strcmp(action, "open east") == 0) || (strcmp(action, "o e") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -565,21 +553,24 @@ bool World::inputs(){
 					{
 						(exits + i)->open = true;
 						printf("You opened the door.\n");
+						break;
 					}
 					else
 					{
 						printf("The door is already opened.\n");
+						break;
 					}
 				}
 				else
 				{
 					printf("No doors in that way.\n");
+					break;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(action, "open west") == 0)
+	else if ((strcmp(action, "open west") == 0) || (strcmp(action, "o w") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -591,22 +582,25 @@ bool World::inputs(){
 					{
 						(exits + i)->open = true;
 						printf("You opened the door.\n");
+						break;
 					}
 					else
 					{
 						printf("The door is already opened.\n");
+						break;
 					}
 				}
 				else
 				{
 					printf("No doors in that way.\n");
+					break;
 				}
 			}
 		}
 	}
 	
 
-	else if (strcmp(action, "close north") == 0)
+	else if ((strcmp(action, "close north") == 0) || (strcmp(action, "c n") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -618,21 +612,24 @@ bool World::inputs(){
 					{
 						(exits + i)->open = false;
 						printf("You closed the door.\n");
+						break;
 					}
 					else
 					{
 						printf("The door is already closed.\n");
+						break;
 					}
 				}
 				else
 				{
 					printf("No doors in that way.\n");
+					break;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(action, "close south") == 0)
+	else if ((strcmp(action, "close south") == 0) || (strcmp(action, "c s") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -644,21 +641,24 @@ bool World::inputs(){
 					{
 						(exits + i)->open = false;
 						printf("You closed the door.\n");
+						break;
 					}
 					else
 					{
 						printf("The door is already closed.\n");
+						break;
 					}
 				}
 				else
 				{
 					printf("No doors in that way.\n");
+					break;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(action, "close east") == 0)
+	else if ((strcmp(action, "close east") == 0) || (strcmp(action, "c e") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -670,21 +670,24 @@ bool World::inputs(){
 					{
 						(exits + i)->open = false;
 						printf("You closed the door.\n");
+						break;
 					}
 					else
 					{
 						printf("The door is already closed.\n");
+						break;
 					}
 				}
 				else
 				{
 					printf("No doors in that way.\n");
+					break;
 				}
 			}
 		}
 	}
 
-	else if (strcmp(action, "close west") == 0)
+	else if ((strcmp(action, "close west") == 0) || (strcmp(action, "c w") == 0))
 	{
 		for (i = 0; i < NUM_EXITS; i++)
 		{
@@ -696,15 +699,18 @@ bool World::inputs(){
 					{
 						(exits + i)->open = false;
 						printf("You closed the door.\n");
+						break;
 					}
 					else
 					{
 						printf("The door is already closed.\n");
+						break;
 					}
 				}
 				else
 				{
 					printf("No doors in that way.\n");
+					break;
 				}
 			}
 		}
@@ -714,6 +720,8 @@ bool World::inputs(){
 
 	else if ((strcmp(action, "q") == 0) || (strcmp(action, "quit") == 0))
 	{
+		printf("Thanks for playing! c u soon!\n");
+		getchar();
 		return false;
 	}
 

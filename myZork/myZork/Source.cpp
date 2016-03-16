@@ -10,16 +10,15 @@
 
 int main()
 {
+	bool ans = true;
 	World* world = new World;
 	world->createworld();
 	world->worldintro();
 	
 	do
 	{ 
-	world->inputs();
-	} while (1);
-
-	getchar();
+	ans = world->inputs();
+	} while (ans == true);
 
 	delete world;
 
